@@ -1,7 +1,5 @@
 FROM php:8.3.12-fpm-alpine3.20
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
-
 RUN apk add --no-cache git curl zip unzip oniguruma-dev libxml2-dev \
     libpng-dev libjpeg-turbo-dev freetype-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
@@ -11,11 +9,14 @@ COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copia tutto PRIMA, così artisan è già dentro
+# Copia tutto il progetto PRIMA
 COPY . .
 
-# Poi installa le dipendenze
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+# Disabilita gli script durante l'installazione
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-interaction --prefer-dist --ignore-platform-reqs --no-scripts -vvv
+
+# Ora che tutto è pronto, puoi forzare gli script se necessario
+RUN php artisan package:discover || true
 
 RUN chown -R www-data:www-data storage bootstrap/cache
 

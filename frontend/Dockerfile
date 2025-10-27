@@ -22,8 +22,9 @@ RUN npm run build --omit=dev
 # --- STAGE DI SERVE ---
 FROM nginx:stable-alpine AS serve
 
-# Copia la build Angular nel server NGINX
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+# Copia la build Angular corretta nel server NGINX
+COPY --from=build /usr/src/app/dist/frontend/browser /usr/share/nginx/html
+
 
 # Espone la porta
 EXPOSE 4200
