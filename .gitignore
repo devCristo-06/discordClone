@@ -1,0 +1,54 @@
+################################
+# GENERALE
+################################
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.bak
+
+################################
+# ENV / SECRETS
+################################
+.env
+.env.*
+!.env.example
+
+################################
+# DOCKER
+################################
+mysql_data/
+docker-data/
+**/docker-data/
+*.pid
+
+################################
+# LARAVEL
+################################
+backend/vendor/
+backend/node_modules/
+backend/storage/
+backend/bootstrap/cache/
+backend/.phpunit.result.cache
+
+################################
+# ANGULAR
+################################
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.cache/
+frontend/.vite/
+
+################################
+# IDE / EDITOR
+################################
+.vscode/
+.idea/
+*.iml
+
+################################
+# OS / WSL
+################################
+mnt/
