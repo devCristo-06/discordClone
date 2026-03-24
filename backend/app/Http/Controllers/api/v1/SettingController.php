@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\v1;
 
-use App\Models\Channel;
+use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
-class ChannelController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class ChannelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Channel $channel)
+    public function show(Setting $setting)
     {
         //
     }
@@ -42,7 +43,7 @@ class ChannelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Channel $channel)
+    public function edit(Setting $setting)
     {
         //
     }
@@ -50,7 +51,7 @@ class ChannelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Channel $channel)
+    public function update(Request $request, Setting $setting)
     {
         //
     }
@@ -58,7 +59,7 @@ class ChannelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Channel $channel)
+    public function destroy(Setting $setting)
     {
         //
     }

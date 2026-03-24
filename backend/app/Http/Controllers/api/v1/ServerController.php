@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\v1;
 
-use App\Models\Message;
+use App\Http\Controllers\Controller;
+use App\Models\Server;
 use Illuminate\Http\Request;
 
-class MessageController extends Controller
+class ServerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class MessageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Message $message)
+    public function show(Server $server)
     {
         //
     }
@@ -42,7 +43,7 @@ class MessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Message $message)
+    public function edit(Server $server)
     {
         //
     }
@@ -50,7 +51,7 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, Server $server)
     {
         //
     }
@@ -58,8 +59,18 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Message $message)
+    public function destroy(Server $server)
     {
         //
+    }
+
+    /**
+     * @author Christopher
+     * 
+     * Module that tests the features
+     */
+    public function test()
+    {
+        return response()->json(["message" => "HELLO!"]);
     }
 }

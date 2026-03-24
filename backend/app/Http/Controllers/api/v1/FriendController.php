@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\v1;
 
-use App\Models\Server;
+use App\Http\Controllers\Controller;
+use App\Models\Friend;
 use Illuminate\Http\Request;
 
-class ServerController extends Controller
+class FriendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class ServerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Server $server)
+    public function show(Friend $friend)
     {
         //
     }
@@ -42,7 +43,7 @@ class ServerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Server $server)
+    public function edit(Friend $friend)
     {
         //
     }
@@ -50,7 +51,7 @@ class ServerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Server $server)
+    public function update(Request $request, Friend $friend)
     {
         //
     }
@@ -58,18 +59,8 @@ class ServerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Server $server)
+    public function destroy(Friend $friend)
     {
         //
-    }
-
-    /**
-     * @author Christopher
-     * 
-     * Module that tests the features
-     */
-    public function test()
-    {
-        return response()->json(["message" => "HELLO!"]);
     }
 }

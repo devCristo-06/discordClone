@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\v1;
 
-use App\Models\Auth;
+use App\Http\Controllers\Controller;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Auth $auth)
+    public function show(Home $home)
     {
         //
     }
@@ -42,7 +43,7 @@ class AuthController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Auth $auth)
+    public function edit(Home $home)
     {
         //
     }
@@ -50,7 +51,7 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Auth $auth)
+    public function update(Request $request, Home $home)
     {
         //
     }
@@ -58,7 +59,7 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Auth $auth)
+    public function destroy(Home $home)
     {
         //
     }

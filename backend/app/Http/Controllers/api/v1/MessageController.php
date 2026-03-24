@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\v1;
 
-use App\Models\Friend;
+use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class FriendController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class FriendController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Friend $friend)
+    public function show(Message $message)
     {
         //
     }
@@ -42,7 +43,7 @@ class FriendController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Friend $friend)
+    public function edit(Message $message)
     {
         //
     }
@@ -50,7 +51,7 @@ class FriendController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Friend $friend)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -58,7 +59,7 @@ class FriendController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Friend $friend)
+    public function destroy(Message $message)
     {
         //
     }
