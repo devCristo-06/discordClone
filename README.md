@@ -1,27 +1,34 @@
 # Discord Clone
 
-## Requisiti
+Clone di Discord sviluppato per studio e portfolio.
 
-- Docker Desktop
+## Stack
+
+- Laravel 12
+- Angular 21
+- Docker
+- MySQL 8
+- phpMyAdmin
+- Nginx
 
 ## Avvio
 
-docker compose build
-
 docker compose up -d
 
-## Laravel
+cd frontend
 
-docker compose exec app composer install
+ng serve
 
-docker compose exec app php artisan migrate
+## Servizi
 
-docker compose exec app php artisan key:generate
-
-## phpMyAdmin
-
-http://localhost:8080
-
-## Laravel
+Laravel
 
 http://localhost:8000
+
+Angular
+
+http://localhost:4200
+
+phpMyAdmin
+
+http://localhost:8080
