@@ -3,9 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return response()->json([
-        'status' => 'ok',
-        'backend' => 'laravel'
-    ]);
+    return view('welcome');
 });
-

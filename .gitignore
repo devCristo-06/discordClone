@@ -1,54 +1,52 @@
-################################
-# GENERALE
-################################
-.DS_Store
-Thumbs.db
-*.log
-*.tmp
-*.swp
-*.bak
+# ======================
+# Laravel
+# ======================
 
-################################
-# ENV / SECRETS
-################################
-.env
-.env.*
-!.env.example
-
-################################
-# DOCKER
-################################
-mysql_data/
-docker-data/
-**/docker-data/
-*.pid
-
-################################
-# LARAVEL
-################################
+backend/.env
 backend/vendor/
-backend/node_modules/
-backend/storage/
-backend/bootstrap/cache/
-backend/.phpunit.result.cache
+backend/storage/*.key
+backend/storage/logs/*
+backend/bootstrap/cache/*.php
 
-################################
-# ANGULAR
-################################
+# ======================
+# Angular
+# ======================
+
 frontend/node_modules/
 frontend/dist/
 frontend/.angular/
-frontend/.cache/
-frontend/.vite/
 
-################################
-# IDE / EDITOR
-################################
+# ======================
+# Docker
+# ======================
+
+docker/mysql/data/
+
+# ======================
+# IDE
+# ======================
+
 .vscode/
 .idea/
-*.iml
 
-################################
-# OS / WSL
-################################
-mnt/
+# ======================
+# OS
+# ======================
+
+.DS_Store
+Thumbs.db
+
+# ======================
+# Logs
+# ======================
+
+*.log
+
+# ======================
+# Environment
+# ======================
+
+.env
+.env.*
+
+!.env.example

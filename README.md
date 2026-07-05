@@ -1,36 +1,27 @@
-# DISCORD CLONE
+# Discord Clone
 
-Progetto Full-Stack con le seguenti tecnologie:
+## Requisiti
 
-**Frontend** 
-- Angular 21
-- Bootstrap
-- RxJS
-  
-**Backend**
-- Laravel 12
-- PHP 8.x
-- MySQL 8
+- Docker Desktop
 
-**Infrastrutture**
-- Docker e Docker Compose
-- WebSocket
+## Avvio
 
-# CARATTERISTICHE
-- 🔒 Autenticazione sicura (OAuth 2 e JWT)
-- ✉️ Messaggi in tempo reale tramite WebSocket
-- 👤 Amicizie, server privati tuoi o quelli dei tuoi amici
-- 🔊 Accesso ai vocali delle stanze dei server
+docker compose build
 
-# ARCHITETTURA
-- Il frontend comunica con il backend tramite REST e WebSocket
-- Laravel si occupa dell'autenticazione, APIs ed eventi in real-time
-- MySQL per la gestione del DB e delle queries inviate da Laravel
-- Docker isola i servizi e gli ambienti
+docker compose up -d
 
-# COME FAR PARTIRE
-```bash
-git clone git@github:your-username/discordClone.git
-cd discordClone
-docker compose up --build
-```
+## Laravel
+
+docker compose exec app composer install
+
+docker compose exec app php artisan migrate
+
+docker compose exec app php artisan key:generate
+
+## phpMyAdmin
+
+http://localhost:8080
+
+## Laravel
+
+http://localhost:8000
