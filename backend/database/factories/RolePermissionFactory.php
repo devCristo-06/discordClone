@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\RolePermission;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<User>
+ * @extends Factory<RolePermission>
  */
-class UserFactory extends Factory
+class RolePermissionFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Friendship;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<User>
+ * @extends Factory<Friendship>
  */
-class UserFactory extends Factory
+class FriendshipFactory extends Factory
 {
     /**
      * Define the model's default state.

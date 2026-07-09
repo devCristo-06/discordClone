@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Attachment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<User>
+ * @extends Factory<Attachment>
  */
-class UserFactory extends Factory
+class AttachmentFactory extends Factory
 {
     /**
      * Define the model's default state.

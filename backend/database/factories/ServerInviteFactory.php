@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\ServerInvite;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<User>
+ * @extends Factory<ServerInvite>
  */
-class UserFactory extends Factory
+class ServerInviteFactory extends Factory
 {
     /**
      * Define the model's default state.
