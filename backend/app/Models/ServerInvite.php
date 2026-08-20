@@ -28,4 +28,26 @@ class ServerInvite extends Model
             'expires_at' => 'datetime',
         ];
     }
+
+    // ------------------------------------
+    // INVIO RELAZIONI TRA INVITI E TABELLE
+    // ------------------------------------
+
+
+
+    // --------------------------------------
+    // RITORNO RELAZIONI TRA INVITI E TABELLE
+    // --------------------------------------
+
+    // Relazione M:1 con Inviti del server
+    public function server()
+    {
+        return $this->belongsTo(Server::class, 'server_id');
+    }
+
+    // Relazione M:1 con Utente
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

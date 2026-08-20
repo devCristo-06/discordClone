@@ -15,4 +15,6 @@ class RolePermission extends Pivot
         'role_id',
         'permission_id'
     ];
+
+    // Al momento non necessario per strutturare le relazioni
 }

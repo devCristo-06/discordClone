@@ -30,4 +30,31 @@ class Channel extends Model
             'visibility' => 'boolean',
         ];
     }
+
+    // ------------------------------------
+    // INVIO RELAZIONI TRA CANALI E TABELLE
+    // ------------------------------------
+
+    // Relazione 1:M con Messaggi
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'channel_id');
+    }
+
+
+    // --------------------------------------
+    // RITORNO RELAZIONI TRA CANALI E TABELLE
+    // --------------------------------------
+
+    // Relazione M:1 con Utente
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    // Relazione M:1 con Server
+    public function server()
+    {
+        return $this->belongsTo(Server::class, 'server_id');
+    }
 }

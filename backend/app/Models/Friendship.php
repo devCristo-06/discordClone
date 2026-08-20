@@ -17,4 +17,26 @@ class Friendship extends Model
         'receiver_id',
         'status'
     ];
+
+    // --------------------------------------
+    // INVIO RELAZIONI TRA AMICIZIE E TABELLE
+    // --------------------------------------
+
+
+
+    // ------------------------------------
+    // RITORNO RELAZIONI TRA AMICIZIE E TABELLE
+    // ----------------------------------------
+
+    // Relazione M:M con Amicizie (lato sender)
+    public function sender()
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    // Relazione M:M con Amicizie (lato reicever)
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
 }

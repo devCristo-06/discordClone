@@ -29,7 +29,17 @@ class Setting extends Model
         ];
     }
 
-    // Relazione 1:1 con Utenti
+    // ------------------------------------------
+    // INVIO RELAZIONI TRA IMPOSTAZIONI E TABELLE
+    // ------------------------------------------
+
+
+
+    // --------------------------------------------
+    // RITORNO RELAZIONI TRA IMPOSTAZIONI E TABELLE
+    // --------------------------------------------
+
+    // Relazione 1:1 con Utent
     public function user()
     {
         return $this->belongsTo(User::class);

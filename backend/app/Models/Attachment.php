@@ -26,7 +26,23 @@ class Attachment extends Model
     protected function casts(): array
     {
         return [
-            'uploaded_at' => 'timestamp',
+            'uploaded_at' => 'datetime',
         ];
+    }
+
+    // ----------------------------------
+    // INVIO RELAZIONI TRA FILE E TABELLE
+    // ----------------------------------
+
+
+
+    // ------------------------------------
+    // RITORNO RELAZIONI TRA FILE E TABELLE
+    // ------------------------------------
+
+    // Relazione M:1 con Messaggi
+    public function message()
+    {
+        return $this->belongsTo(Message::class, 'message_id');
     }
 }

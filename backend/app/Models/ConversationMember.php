@@ -27,4 +27,26 @@ class ConversationMember extends Model
             'joined_at' => 'datetime',
         ];
     }
+
+    // -----------------------------------------------
+    // INVIO RELAZIONI TRA MEMBRI DEL GRUPPO E TABELLE
+    // -----------------------------------------------
+
+
+
+    // -------------------------------------------------
+    // RITORNO RELAZIONI TRA MEMBRI DEL GRUPPO E TABELLE
+    // -------------------------------------------------
+
+    // Relazione M:1 con Gruppi
+    public function conversation()
+    {
+        return $this->belongsTo(Conversation::class, 'conversation_id');
+    }
+
+    // Relazione M:M con Utente
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
