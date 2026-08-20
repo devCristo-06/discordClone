@@ -3,10 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Friendship extends Pivot
+class Friendship extends Model
 {
     /** @use HasFactory<\Database\Factories\FriendshipFactory> */
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    // Caratteristiche della tabella
+    protected $fillable = [
+        'sender_id',
+        'receiver_id',
+        'status'
+    ];
 }

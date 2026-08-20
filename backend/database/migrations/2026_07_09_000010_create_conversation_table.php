@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
+            $table->foreignId('created_by')
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->string('type');

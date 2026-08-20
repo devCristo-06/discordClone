@@ -9,4 +9,10 @@ class RolePermission extends Pivot
 {
     /** @use HasFactory<\Database\Factories\RolePermissionFactory> */
     use HasFactory;
+
+    // Caratteristiche della tabella
+    protected $fillable = [
+        'role_id',
+        'permission_id'
+    ];
 }
