@@ -11,16 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('server_invites', function (Blueprint $table) {
+        Schema::create('server_members', function (Blueprint $table) {
             $table->id();
             $table->foreignId('server_id')
                 ->constrained('servers')
                 ->cascadeOnDelete();
-            $table->string('code')->unique();
-            $table->foreignId('created_by')
+            $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
-            $table->timestamp('expires_at')->nullable();
+            $table->foreignId('role_id')
+                ->constrained('roles')
+                ->cascadeOnDelete();
+            $table->timestamp('joined_at')->nullable();
+            $table->unique(['server_id', 'user_id']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('server_invites');
+        Schema::dropIfExists('server_members');
     }
 };

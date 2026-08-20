@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('conversation_members', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('conversation_id')
+                ->constrained('conversations')
+                ->cascadeOnDelete();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->timestamp('joined_at')->nullable();
+            $table->unique(['conversation_id', 'user_id']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

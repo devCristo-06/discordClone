@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('server_id')
+                ->constrained('servers')
+                ->cascadeOnDelete();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->string('name_channel');
+            $table->string('desc_channel')->nullable();
+            $table->unsignedInteger('position');
+            $table->string('type');
+            $table->boolean('visibility');;
             $table->timestamps();
         });
     }
