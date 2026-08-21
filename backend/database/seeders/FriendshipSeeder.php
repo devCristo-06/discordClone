@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FriendshipSeeder extends Seeder
 {
@@ -12,6 +12,17 @@ class FriendshipSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('friendships')->insert([
+            [
+                'sender_id' => 1,
+                'receiver_id' => 2,
+                'status' => 'accepted'
+            ],
+            [
+                'sender_id' => 1,
+                'receiver_id' => 3,
+                'status' => 'pending'
+            ]
+        ]);
     }
 }

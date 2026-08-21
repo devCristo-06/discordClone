@@ -20,10 +20,10 @@ return new class extends Migration
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->string('name_channel');
-            $table->string('desc_channel')->nullable();
+            $table->string('description_channel')->nullable();
             $table->unsignedInteger('position');
             $table->string('type');
-            $table->boolean('visibility');;
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }

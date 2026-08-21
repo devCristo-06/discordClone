@@ -17,7 +17,8 @@ class Server extends Model
         'icon',
         'banner',
         'name_server',
-        'desc_server'
+        'description_server',
+        'genre'
     ];
 
     // ------------------------------------

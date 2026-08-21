@@ -16,7 +16,11 @@ return new class extends Migration
             $table->foreignId('channel_id')
                 ->nullable()
                 ->constrained('channels')
-                ->cascadeOnDelete();
+                ->nullOnDelete();
+            $table->foreignId('conversation_id')
+                ->nullable()
+                ->constrained('conversations')
+                ->nullOnDelete();
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ServerSeeder extends Seeder
 {
@@ -12,6 +12,25 @@ class ServerSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('servers')->insert([
+            [
+                'owner_id' => 1,
+                'name_server' => "TITLE TEST 1",
+                'description_server' => "DESCRIPTION TEST 1",
+                'genre' => null
+            ],
+            [
+                'owner_id' => 1,
+                'name_server' => "GAMING",
+                'description_server' => "SERVER DEDICATED TO GAMING",
+                'genre' => "Videogames"
+            ],
+            [
+                'owner_id' => 2,
+                'name_server' => "STREAMING",
+                'description_server' => "SERVER DEDICATED TO STREAMING",
+                'genre' => null
+            ],
+        ]);
     }
 }

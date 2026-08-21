@@ -14,6 +14,7 @@ class Message extends Model
     // Caratteristiche della tabella
     protected $fillable = [
         'channel_id',
+        'conversation_id',
         'user_id',
         'content'
     ];

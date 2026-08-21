@@ -15,7 +15,7 @@ class Channel extends Model
         'server_id',
         'user_id',
         'name_channel',
-        'desc_channel',
+        'description_channel',
         'position',
         'type',
         'visibility'

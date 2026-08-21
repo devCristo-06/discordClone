@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ConversationMemberSeeder extends Seeder
 {
@@ -12,6 +12,32 @@ class ConversationMemberSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('conversation_members')->insert([
+            [
+                'conversation_id' => 1,
+                'user_id' => 1,
+                'joined_at' => now()
+            ],
+            [
+                'conversation_id' => 1,
+                'user_id' => 2,
+                'joined_at' => now()
+            ],
+            [
+                'conversation_id' => 1,
+                'user_id' => 3,
+                'joined_at' => now()
+            ],
+            [
+                'conversation_id' => 2,
+                'user_id' => 1,
+                'joined_at' => now()
+            ],
+            [
+                'conversation_id' => 2,
+                'user_id' => 2,
+                'joined_at' => now()
+            ],
+        ]);
     }
 }

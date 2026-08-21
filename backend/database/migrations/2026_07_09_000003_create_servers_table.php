@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->string('banner')->nullable();
             $table->string('name_server');
-            $table->string('desc_server')->nullable();
+            $table->string('description_server')->nullable();
+            $table->string('genre')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
