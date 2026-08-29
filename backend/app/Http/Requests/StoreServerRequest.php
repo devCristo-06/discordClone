@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Server;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -12,7 +13,11 @@ class StoreServerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if (!$this->user()) {
+            return false;
+        }
+
+        return $this->user()->can('create', Server::class);
     }
 
     /**
@@ -23,7 +28,11 @@ class StoreServerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name_server' => ['required', 'string', 'max:100'],
+            'description_server' => ['nullable', 'string', 'max:1000'],
+            'icon' => ['nullable', 'string', 'max:255'],
+            'banner' => ['nullable', 'string', 'max:255'],
+            'genre' => ['nullable', 'string', 'max:50'],
         ];
     }
 }

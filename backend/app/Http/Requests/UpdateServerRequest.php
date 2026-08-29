@@ -12,7 +12,9 @@ class UpdateServerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $server = $this->route('server');
+
+        return $server && $this->user()->can('update', $server);
     }
 
     /**
@@ -23,7 +25,11 @@ class UpdateServerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name_server' => ['sometimes', 'string', 'max:100'],
+            'description_server' => ['sometimes', 'nullable', 'string', 'max:1000'],
+            'icon' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'banner' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'genre' => ['sometimes', 'nullable', 'string', 'max:50'],
         ];
     }
 }

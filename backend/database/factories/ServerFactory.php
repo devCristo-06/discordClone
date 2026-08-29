@@ -18,7 +18,9 @@ class ServerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name_server' => fake()->country(),
+            'description_server' => fake()->paragraph(),
+            'genre' => null
         ];
     }
 }
