@@ -12,9 +12,12 @@ class UpdateServerRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        $user = $this->user();
         $server = $this->route('server');
 
-        return $server && $this->user()->can('update', $server);
+        return $user !== null
+            && $server !== null
+            && $user->can('update', $server);
     }
 
     /**

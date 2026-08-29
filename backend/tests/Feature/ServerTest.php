@@ -5,12 +5,11 @@ namespace Tests\Feature;
 use App\Models\Server;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class ServerTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
@@ -56,7 +55,7 @@ class ServerTest extends TestCase
             'name_server' => 'Example Guest',
         ]);
         // dd($response);
-        $response->assertForbidden();
+        $response->assertUnauthorized();
     }
     // ----------------------------------------------------------------------
     /**
@@ -170,8 +169,37 @@ class ServerTest extends TestCase
     public function test_user_can_view_servers(): void
     {
         $user = User::factory()->create();
-        $response = $this->actingAs($user)->get('/api/v1/servers');
+
+        Server::factory()->count(3)->create([
+            'owner_id' => $user->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->getJson('/api/v1/servers');
+
         $response->assertOk();
+
+        $response->assertJsonCount(3, 'data');
+    }
+        // ----------------------------------------------------------------------
+    /**
+     * Test to verify that the guest can see the list of servers
+     * @author Cristo
+     * @return void
+     */
+    public function test_guest_can_view_servers(): void
+    {
+        $owner = User::factory()->create();
+
+        Server::factory()->count(3)->create([
+            'owner_id' => $owner->id,
+        ]);
+
+        $response = $this->getJson('/api/v1/servers');
+
+        $response->assertOk();
+
+        $response->assertJsonCount(3, 'data');
     }
     // ----------------------------------------------------------------------
     /**
@@ -214,10 +242,6 @@ class ServerTest extends TestCase
             ->deleteJson("/api/v1/servers/{$server->id}");
 
         $response->assertNoContent();
-
-        $this->assertSoftDeleted('servers', [
-            'id' => $server->id,
-        ]);
     }
     // ----------------------------------------------------------------------
     /**
@@ -239,9 +263,9 @@ class ServerTest extends TestCase
 
         $response->assertForbidden();
 
-        $this->assertDatabaseMissing('servers', [
+        $this->assertDatabaseHas('servers', [
             'id' => $server->id,
-            'name_server' => 'Tentativo hacker',
+            'deleted_at' => null,
         ]);
     }
     // ----------------------------------------------------------------------
@@ -258,10 +282,9 @@ class ServerTest extends TestCase
             'owner_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)
-            ->deleteJson("/api/v1/servers/{$server->id}");
-
-        $response->assertNoContent();
+        $this->actingAs($user)
+            ->deleteJson("/api/v1/servers/{$server->id}")
+            ->assertNoContent();
 
         $this->assertSoftDeleted('servers', [
             'id' => $server->id,
@@ -293,6 +316,27 @@ class ServerTest extends TestCase
         ]);
 
         $response->assertJsonCount(20, 'data');
+        $response->assertJsonPath('meta.current_page', 1);
+        $response->assertJsonPath('meta.per_page', 20);
+        $response->assertJsonPath('meta.total', 25);
+    }
+
+    public function test_servers_second_page_contains_remaining_servers(): void
+    {
+        $user = User::factory()->create();
+
+        Server::factory()->count(25)->create([
+            'owner_id' => $user->id,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->getJson('/api/v1/servers?page=2');
+
+        $response->assertOk();
+
+        $response->assertJsonCount(5, 'data');
+        $response->assertJsonPath('meta.current_page', 2);
+        $response->assertJsonPath('meta.total', 25);
     }
     // ----------------------------------------------------------------------
     /**
@@ -329,5 +373,15 @@ class ServerTest extends TestCase
                 'updated_at',
             ],
         ]);
+    }
+
+    public function test_user_cannot_view_non_existing_server(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->getJson('/api/v1/servers/999999');
+
+        $response->assertNotFound();
     }
 }

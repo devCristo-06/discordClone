@@ -19,7 +19,7 @@ class ServerFactory extends Factory
     {
         return [
             'name_server' => fake()->country(),
-            'description_server' => fake()->paragraph(),
+            'description_server' => fake()->text(200),
             'genre' => null
         ];
     }

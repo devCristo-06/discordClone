@@ -14,10 +14,12 @@ Route::get('/', function () {
 
 Route::prefix('api/v1')->group(function () {
 
-    // REGISTER AND LOGIN PAGES
-    // Route::post('/register', [AuthController::class, 'register']);
-    // Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/servers', [ServerController::class, 'index']);
+    Route::get('/servers/{server}', [ServerController::class, 'show']);
 
-    // TEST TO CHECK THE SERVERS
-    Route::apiResource('servers', ServerController::class);
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/servers', [ServerController::class, 'store']);
+        Route::put('/servers/{server}', [ServerController::class, 'update']);
+        Route::delete('/servers/{server}', [ServerController::class, 'destroy']);
+    });
 });

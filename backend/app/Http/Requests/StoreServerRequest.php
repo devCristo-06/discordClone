@@ -13,10 +13,6 @@ class StoreServerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (!$this->user()) {
-            return false;
-        }
-
         return $this->user()->can('create', Server::class);
     }
 
